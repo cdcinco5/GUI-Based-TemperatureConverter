@@ -12,16 +12,19 @@ class MyWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         QtWidgets.QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
-        self.FahConvert.clicked.connect(self.FahtoCel)
-        self.CelConvert.clicked.connect(self.CeltoFah)
+        self.FahConvert.clicked.connect(self.Fahconvert)
+        self.CelConvert.clicked.connect(self.Celconvert)
         
-    def FahtoCel(self):
-        tempC = Decimal((self.Fahrenheit.toPlainText()-32)*5/9,1)
+    def Fahconvert(self):
+        tempC = Decimal(self.Fahrenheit.toPlainText())
+        tempC = round(((tempC)-32)*5/9,3)
         self.Celsius.setPlainText(str(tempC))
-
-
-    def CeltoFah(self):
-        tempF = Decimal((self.Celsius.toPlainText())*9/5+32,1)
+    
+        
+    def Celconvert(self):
+        tempF = Decimal(self.Celsius.toPlainText())
+        tempF = round((tempF)*9/5+32,3)
+        
         self.Fahrenheit.setPlainText(str(tempF))
            
 
